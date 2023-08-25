@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import Styles from './Card.module.css'
-import {NavLink} from 'react-router-dom'
 import {
   AiOutlineHeart,
   AiFillPlusCircle,
