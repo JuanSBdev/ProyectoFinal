@@ -10,12 +10,12 @@ export default function App() {
   return (
     <div>
       <Routes>
-        <Route exact path="/" Component={Start} />
-        <Route exact path="/home" Component={Home} />
-        <Route exact path="/form" Component={Form} />
-        <Route exact path="/detail:id" Component={Detail} />
-        <Route exact path="/products" Component={BuyView} />
-        <Route path="*" Component={NotFound} />
+          <Route exact path="/" Component={Start}/>
+          <Route exact path="/home" Component={Home}/>
+          <Route exact path="/form" Component={Form}/>
+          <Route exact path="/products/detail/:id" Component={Detail}/>
+          <Route exact path="/products" Component={BuyView}/>
+          <Route path="*" Component={NotFound}/>
       </Routes>
     </div>
   )

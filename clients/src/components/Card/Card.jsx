@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import Styles from './Card.module.css'
+import { NavLink } from 'react-router-dom'
 import {
   AiOutlineHeart,
   AiFillPlusCircle,
@@ -12,9 +13,10 @@ Card.propTypes = {
   img: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
 }
 
-export default function Card({ aviability, img, name, price }) {
+export default function Card({ aviability, img, name, price, id }) {
   const [buyQ, setBuyQ] = useState(1)
 
   const handleMoreQ = () => {
@@ -36,9 +38,9 @@ export default function Card({ aviability, img, name, price }) {
         <AiOutlineHeart />
       </div>
       <div className={Styles.div_image}>
-        <div className={Styles.img_container}>
+        <NavLink to={`/products/detail/${id}`}>
           <img className={Styles.img_product} src={img} alt="Image product" />
-        </div>
+        </NavLink>
       </div>
       <div className={Styles.description_card}>
         <div className={Styles.price}>
