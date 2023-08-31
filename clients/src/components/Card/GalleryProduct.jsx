@@ -1,4 +1,3 @@
-import { auto } from '@cloudinary/url-gen/qualifiers/quality';
 import React, { useEffect, useRef } from 'react';
 //className={classes.Gallery}
 export default function GalleryProduct(){
