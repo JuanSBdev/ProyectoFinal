@@ -1,0 +1,58 @@
+/* ShoppingCar.module.css */
+
+.productContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.productCard {
+    width: 300px;
+    margin: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.productImage {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.productName {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.productPrice {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.productStock {
+    font-size: 0.8rem;
+    margin: 0;
+    color: #888;
+}
+
+.productButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.productButton:hover {
+    background-color: #0056b3;
+}
+
+
+
+
