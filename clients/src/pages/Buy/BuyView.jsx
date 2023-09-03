@@ -42,14 +42,14 @@ export default function BuyView() {
       console.log('despacha getproducts')
       dispatch(filterByGenres(filters))
     }
-  }, [])
+  }, [search, dispatch, filters])
 
   useEffect(() => {
     if (!prods) {
       dispatch(getBrands())
       console.log('despacha brands')
     }
-  }, [])
+  }, [dispatch, prods])
 
   // useEffect(() => {
   //   dispatch(filterByGenres(filters));
