@@ -5,61 +5,45 @@ import { BsSearch } from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
 import LogInButton from '../Login/LogInButton'
 import Profile from '../Login/Profile'
-import { useAuth0 } from '@auth0/auth0-react'; 
+import { useAuth0 } from '@auth0/auth0-react'
 import LogOut from '../Login/LogOut'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getNameProducts } from '../../Redux/actions/actions'
 import { createUser } from '../../Redux/actions/actions'
-
-
 
 export default function Nav() {
   let dispatch = useDispatch()
 
-  const {user, isAuthenticated } = useAuth0()
-  const userLog = useSelector(state => state.user)
+  const { user, isAuthenticated } = useAuth0()
+  const userLog = useSelector((state) => state.user)
 
-  useEffect(()=>{
-
-    if(user && user.name !== userLog.name && isAuthenticated){
-    dispatch(createUser(user.name, user.email))
-  }
-  },[user])
-
-  
-  let name = useSelector( state => state.product_name[0])
-  //dropdown para logout profile
-    const [showMenu, setShowMenu] = useState(false);
- 
-
-    const handleMouseEnter = () => {
-      setShowMenu(true);
-    };
-    
-    const handleMouseLeave = () => {
-      setShowMenu(false);
-    };
-//buscar por nombre redux
-    let [inputSearch, setInputSearch] = useState('')
-//para buscar con enter 
-let handleSearch = (e) => {
-  let { value } = e.target;
-  setInputSearch(value);
- 
-};
-
-   
-    let dispatchSearch = ()=>{
-      dispatch(getNameProducts(inputSearch))
-      
+  useEffect(() => {
+    if (user && user.name !== userLog.name && isAuthenticated) {
+      dispatch(createUser(user.name, user.email))
     }
-    
-//para buscar con enter 
-function handleKeyDown(e) {
-  if (e.key === 'Enter') {
-    console.log('asd');
+  }, [dispatch, isAuthenticated, userLog, user])
+
+  //dropdown para logout profile
+  const [showMenu, setShowMenu] = useState(false)
+
+  const handleMouseEnter = () => {
+    setShowMenu(true)
   }
-}
+
+  const handleMouseLeave = () => {
+    setShowMenu(false)
+  }
+  //buscar por nombre redux
+  let [inputSearch, setInputSearch] = useState('')
+  //para buscar con enter
+  let handleSearch = (e) => {
+    let { value } = e.target
+    setInputSearch(value)
+  }
+
+  let dispatchSearch = () => {
+    dispatch(getNameProducts(inputSearch))
+  }
 
   return (
     <div className={Styles.wrapper}>
@@ -97,85 +81,64 @@ function handleKeyDown(e) {
           </div>
         </div>
         <div className={` ${Styles.col_1}`}>
-          <h6 className={Styles.font}>
-            Help
-          </h6>
+          <h6 className={Styles.font}>Help</h6>
         </div>
         <div className={` ${Styles.col_4}`}>
           <NavLink to={'/about'} className={Styles.btn_help}>
-          <h6 className={Styles.font}>
-            About
-          </h6>
+            <h6 className={Styles.font}>About</h6>
           </NavLink>
         </div>
       </div>
       <div className={` ${Styles.col_4}`}>
         <div className={`${Styles.col_search} `}>
-          <form className={`${Styles.form_search}`} onSubmit={dispatchSearch} >
-
-          <input
-            type="text"
-            placeholder="Search"
-            className={`${Styles.searchInput}`}
-            onChange={handleSearch}
-            
+          <form className={`${Styles.form_search}`} onSubmit={dispatchSearch}>
+            <input
+              type="text"
+              placeholder="Search"
+              className={`${Styles.searchInput}`}
+              onChange={handleSearch}
             />
-          <NavLink to={`/products/search`}>
-          <button
-          className={`${Styles.searchButton}`}
-          onClick={dispatchSearch}
-          >
-              <BsSearch />
-          </button>
-          </NavLink>
-            </form>
+            <NavLink to={`/products/search`}>
+              <button
+                className={`${Styles.searchButton}`}
+                onClick={dispatchSearch}
+              >
+                <BsSearch />
+              </button>
+            </NavLink>
+          </form>
         </div>
       </div>
       <div className={` ${Styles.col_2}`}>
         <div className={Styles.container_btn}>
           <div className={` ${Styles.containerLogin}`}>
-          {
-            !isAuthenticated ? (
+            {!isAuthenticated ? (
               <div className={Styles.div_not_auth}>
-
-               <LogInButton/>
+                <LogInButton />
                 <button className={`${Styles.actionButton} ${Styles.create}`}>
-                Sign Up
+                  Sign Up
                 </button>
               </div>
             ) : (
-              <div className={Styles.div_auth} onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}>
+              <div
+                className={Styles.div_auth}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
                 <Profile />
-                 {
-                 showMenu && (
+                {showMenu && (
                   <div className={Styles.drop_user}>
-                    
-                      <LogOut className={Styles.btn_logout} />
-                      <NavLink to='/login'>
-                        complete profile
-                      </NavLink>
-                      <p>Option</p>
-                      <p>Option</p>
-                      <p>Option</p>
+                    <LogOut className={Styles.btn_logout} />
+                    <NavLink to="/login">complete profile</NavLink>
+                    <p>Option</p>
+                    <p>Option</p>
+                    <p>Option</p>
                   </div>
-                 )
-                 }
-              
+                )}
               </div>
-                )
-
-              
-                
-          }
-          
-           
-               
-           
+            )}
           </div>
-          <div className={`${Styles.containerCreate}`}>
-            
-          </div>
+          <div className={`${Styles.containerCreate}`}></div>
         </div>
       </div>
       {/* {isLoginModalOpen && (

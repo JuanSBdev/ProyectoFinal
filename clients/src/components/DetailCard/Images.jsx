@@ -1,7 +1,7 @@
 import Styles from './Images.module.css'
 import GalleryProduct from "../Card/GalleryProduct";
 
-export default function DetailCard({ img1, img_main }) {
+export default function DetailCard() {
   return (
     <div className={Styles.wrapper}>
       <GalleryProduct className={Styles.img_product}/>
