@@ -1,5 +1,4 @@
 import {Cloudinary} from "@cloudinary/url-gen";
-import GalleryProduct from "./GalleryProduct";
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import Styles from './Card.module.css'
