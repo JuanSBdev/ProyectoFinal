@@ -15,7 +15,7 @@ const Footer = () => {
         <div className={styles.container_contact}>
           <div className={`${styles.contact} ${styles.contact_1}`}>
             <BsTelephoneFill />
-            <p className={styles.paragraph_contact}>+59 9 98243533</p>
+            <p className={styles.paragraph_contact}>+00 000 00000</p>
           </div>
           <div className={styles.contact}>
             <BsEnvelope />

@@ -2,6 +2,7 @@
   background-color: #ffc502;
   padding-bottom: 10%;
   padding-top: 2%;
+  
 }
 .wrapper{
     display: flex;
@@ -19,14 +20,15 @@
 }
 .wrapper .text{
     align-self: start;
-    margin: 4%;
+    margin: 4% 4% 0 4% ;
 }
 .images{
     display: flex;
     align-items: center;
     justify-content: space-around;
+
 }
 .images img{
-    width: 15%;   
+    width: 10%;   
 
 }
