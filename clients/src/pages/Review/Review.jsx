@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector} from 'react-redux';
+import {  useState } from 'react';
+import { useDispatch} from 'react-redux';
 //import { submitProductReview } from './redux/actions'; // Reemplaza con tu acción Redux
 import Rating from '@mui/material/Rating';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { getDetail, postReview } from '../../Redux/actions/actions';
-import { getOrders, sellOrder } from '../../Redux/actions/actions';
+import { postReview } from '../../Redux/actions/actions';
 import Styles from './Review.module.css'
 
 

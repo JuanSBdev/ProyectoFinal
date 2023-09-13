@@ -19,8 +19,7 @@ import {
     SELL,
     VALIDATE_SUCCESS_ORDER,
     CREATE_ORDER_SUCCESS,
-    LOGOUT,
-    GET_USER
+    LOGOUT
 } from './actionTypes'
 import axios from "axios"
 

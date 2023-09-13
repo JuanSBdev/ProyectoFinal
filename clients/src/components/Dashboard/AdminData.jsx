@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import Styles from './AdminData.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders, sellOrder } from '../../Redux/actions/actions';
@@ -23,9 +23,7 @@ export default function AdminData() {
   let formulario = ()=>{
     setForm(true)
   }
-  let setReview = (userId, orderId, productId) =>{
-    console.log(userId)
-  }
+ 
 
   useEffect(() => {
     if (userRedux.profile === 'Admin') {
@@ -117,7 +115,7 @@ export default function AdminData() {
             ))
           ) : (
             <div className={Styles.no_sells}>
-              <p>You haven't made any sales yet. Why not start selling your products in D'Lujo now?</p>
+              <p>You haven&lsquo;t made any sales yet. Why not start selling your products in D&lsquo;Lujo now?</p>
             </div>
           )}
         </div>
