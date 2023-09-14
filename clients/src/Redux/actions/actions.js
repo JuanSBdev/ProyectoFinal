@@ -179,8 +179,11 @@ export const postReview = (userId, orderId, productId, description, valoration) 
 }
 
 export function filterByGenres(filters) {
+    console.log("filtros en actions",filters);
     return async (dispatch) => {
         let endpoint = `http://localhost:3001/products?`;
+
+        if (filters.name.length > 0) endpoint += `name=${filters.name}&` 
 
         if (filters.category > 0) endpoint += `categoryFilter=${filters.category}&`;
 

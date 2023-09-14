@@ -12,8 +12,9 @@ import { getNameProducts } from "../../Redux/actions/actions";
 import { createUser } from "../../Redux/actions/actions";
 import { BsCart3 } from "react-icons/bs";
 
-export default function Nav() {
+export default function Nav({ onSearchInputChange, searchInput  }) {
   let dispatch = useDispatch();
+  const [name, setName] = useState("");
 
   const { user, isAuthenticated } = useAuth0();
   const userLog = useSelector((state) => state.user);
@@ -24,7 +25,7 @@ export default function Nav() {
     }
   }, [user, dispatch, userLog, isAuthenticated]);
   /* eslint-disable no-unused-vars */
-  let name = useSelector((state) => state.product_name[0]);
+  //let name = useSelector((state) => state.product_name[0]);
   //dropdown para logout profile
   useEffect(() => {
     if (user && user.name !== userLog.name && isAuthenticated) {
@@ -44,10 +45,13 @@ export default function Nav() {
   let handleSearch = (e) => {
     let { value } = e.target;
     setInputSearch(value);
+    onSearchInputChange(value);
+    setName("");
   };
 
   let dispatchSearch = () => {
     dispatch(getNameProducts(inputSearch));
+    setName("");
   };
 
   return (
@@ -93,6 +97,7 @@ export default function Nav() {
             <input
               type="text"
               placeholder="Search"
+              value={searchInput}
               className={`${Styles.searchInput}`}
               onChange={handleSearch}
             />

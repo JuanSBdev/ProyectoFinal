@@ -18,7 +18,8 @@ const initialFilters = {
   category: 0,
   valoration: 0,
   price: '',
-  brand: ''
+  brand: '',
+  name: ''
 };
 
 export default function BuyView() {
@@ -28,6 +29,7 @@ export default function BuyView() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [currentBrandValue, setCurrentBrandValue] = useState('');
   const [filters, setFilters] = useState(initialFilters);
+  const [searchInput, setSearchInput] = useState('');
   const [activeFilters, setActiveFilters] = useState({
     category: false,
     brand: false,
@@ -67,6 +69,16 @@ export default function BuyView() {
   const handleSelectChangeBrand = (event) => {
     setCurrentBrandValue(event.target.value);
     handlerFilters('brand', event.target.value)
+  };
+
+  const handleSearchInputChange = (input) => {
+    console.log("input",input);
+    setSearchInput(input);
+    const updatedFilters = {
+      ...filters,
+      name: input,
+    };
+    setFilters(updatedFilters);
   };
 
   function handlerFilters(filterType, e) {
@@ -123,6 +135,7 @@ export default function BuyView() {
     if(filterType === "reset"){
       setFilters(initialFilters);
       setActiveFilters(initialFilters);
+      setSearchInput('');
       dispatch(filterByGenres(initialFilters))
     }
   }
@@ -130,10 +143,10 @@ export default function BuyView() {
   return (
     <div>
       <div className={Styles.container_buy}>
-        <Nav />
+        <Nav onSearchInputChange={handleSearchInputChange} handlerFilters={handlerFilters} searchInput={searchInput}/>
         <div className={Styles.wrapper}>
           <div className={Styles.filters}>
-            <button className={Styles.resetfilters} onClick={() => {handlerFilters("reset", "")}}>
+            <button className={Styles.resetfilters} onClick={() => {handlerFilters("reset", ""), handleSearchInputChange(''); }}>
               Reset Filters
             </button>   
             <OrderBy handlerFilters={handlerFilters}/>
